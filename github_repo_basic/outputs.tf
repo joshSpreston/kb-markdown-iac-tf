@@ -18,3 +18,7 @@ output "iac_repo" {
         branches            = module.github_repository_tf.branches
     }
 }
+
+output "github_user_current" {
+    value = module.github_current_user
+}

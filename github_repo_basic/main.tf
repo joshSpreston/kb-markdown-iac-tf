@@ -15,11 +15,16 @@ module "github_repository_tf" {
     auto_init                   = false
 }
 
-# Can't apply branch protection to private "free" repositories
-# module "github_branch_protection_main" {
-#     source                      = "./modules/github_branch_protection"
-#     repository_id               = module.github_repository_main.node_id
-#     pattern                     = var.branch_protection_pattern
-#     enforce_admins              = true
-# }
+module "github_current_user" {
+    source                      = "./modules/github_user_datasource"
+    username                    = var.github_owner  
+}
+
+module "github_branch_protection_tf" {
+    source                      = "./modules/github_branch_protection"
+    repository_id               = module.github_repository_tf.node_id
+    pattern                     = var.branch_protection_pattern
+    enforce_admins              = true
+    push_restrictions           = [module.github_current_user.github_user.user.login]
+}
 
