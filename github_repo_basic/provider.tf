@@ -4,6 +4,9 @@ terraform {
       source  = "integrations/github"
       version = "~> 4.0"
     }
+    gitlab = {
+      source  = "gitlabhq/gitlab"
+    }
   }
 }
 

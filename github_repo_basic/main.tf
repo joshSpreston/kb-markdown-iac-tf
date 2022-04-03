@@ -11,7 +11,7 @@ module "github_repository_tf" {
     source =                    "./modules/github_repository"
     name                        = "${var.repo_name}-iac-tf"
     description                 = "iac terraform for ${var.repo_name}"
-    visibility                  = var.repo_visibility
+    visibility                  = var.tf_repo_visibility
     auto_init                   = false
 }
 

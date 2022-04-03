@@ -14,6 +14,11 @@ variable "repo_visibility" {
   type      = string
 }
 
+variable "tf_repo_visibility" {
+  type      = string
+  default   = "private"
+}
+
 variable "branch_protection_pattern" {
   type      = string
   default   = "main"
